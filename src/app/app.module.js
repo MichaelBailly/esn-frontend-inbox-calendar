@@ -24,3 +24,4 @@ require('./invitation-message/indicator/invitation-message-indicator.component.j
 require('./resource-management/blue-bar/resource-management-blue-bar.component.js');
 require('./resource-management/blue-bar/resource-management-blue-bar.controller.js');
 require('./resource-management/indicator/resource-management-indicator.component.js');
+require('./inline-partstat-chooser/inline-partstat-chooser.module');

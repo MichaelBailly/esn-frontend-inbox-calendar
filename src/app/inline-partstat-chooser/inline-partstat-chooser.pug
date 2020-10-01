@@ -1,0 +1,14 @@
+md-menu(md-position-mode="target-right bottom" ng-show="ctrl.show")
+  button.btn.btn-xs(ng-click='$mdMenu.open($event)' aria-label='Set your participation') Set participation
+    i.mdi.mdi-chevron-down.inline-small
+  md-menu-content
+    md-menu-item(md-autofocus='')
+      button.btn.btn-link.partstat-button.accepted(type='button', ng-click='ctrl.changeParticipation("ACCEPTED")')
+        i.mdi.mdi-check
+        | {{ 'Accept' | translate }}
+      button.btn.btn-link.partstat-button.tentative(type='button', ng-click='ctrl.changeParticipation("TENTATIVE")')
+        i.mdi.mdi-help
+        | {{ 'Maybe' | translate }}
+      button.btn.btn-link.partstat-button.declined(type='button', ng-click='ctrl.changeParticipation("DECLINED")')
+        i.mdi.mdi-close
+        | {{ 'Decline' | translate }}
