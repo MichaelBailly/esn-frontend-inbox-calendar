@@ -1,14 +1,25 @@
-md-menu(md-position-mode="target-right bottom" ng-show="ctrl.show")
+md-menu(ng-show="ctrl.show")
   button.btn.btn-xs(ng-click='$mdMenu.open($event)' aria-label='Set your participation') Set participation
     i.mdi.mdi-chevron-down.inline-small
-  md-menu-content
-    md-menu-item(md-autofocus='')
-      button.btn.btn-link.partstat-button.accepted(type='button', ng-click='ctrl.changeParticipation("ACCEPTED")')
-        i.mdi.mdi-check
-        | {{ 'Accept' | translate }}
-      button.btn.btn-link.partstat-button.tentative(type='button', ng-click='ctrl.changeParticipation("TENTATIVE")')
-        i.mdi.mdi-help
-        | {{ 'Maybe' | translate }}
-      button.btn.btn-link.partstat-button.declined(type='button', ng-click='ctrl.changeParticipation("DECLINED")')
-        i.mdi.mdi-close
-        | {{ 'Decline' | translate }}
+  md-menu-content.partstat-inline-container
+    .m-10.p-l-10.p-r-10.ellipsis
+      .title.m-t-5.ellipsis {{ ctrl.event.title }}
+      div.m-t-15.m-b-10.ellipsis.secondary-text-color
+        span.p-r-10
+          i.mdi.mdi-clock
+        span(ng-if='ctrl.event.allDay') {{ ctrl.event.start.format() | esnDatetime:'mediumDate' }}
+        span(ng-if='!ctrl.event.allDay') {{ ctrl.event.start.format() | esnDatetime:'fullDate' }}
+      div.m-t-10.m-b-15.ellipsis.secondary-text-color
+        span.p-r-10
+          i.mdi.mdi-account-edit
+        span {{ ctrl.event.organizer.fullmail}}
+      div.text-center.partstat-buttons
+        button.btn.btn-link.partstat-button.accepted(type='button', ng-click='ctrl.changeParticipation("ACCEPTED")')
+          i.mdi.mdi-check
+          | {{ 'Accept' | translate }}
+        button.btn.btn-link.partstat-button.tentative(type='button', ng-click='ctrl.changeParticipation("TENTATIVE")')
+          i.mdi.mdi-help
+          | {{ 'Maybe' | translate }}
+        button.btn.btn-link.partstat-button.declined(type='button', ng-click='ctrl.changeParticipation("DECLINED")')
+          i.mdi.mdi-close
+          | {{ 'Decline' | translate }}
